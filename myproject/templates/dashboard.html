@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Page</title>
+    <link rel = "stylesheet" href = "{% static 'mainstyle.css' %}">
+</head>
+<body id="regBody">
+    <h1> Hello {{username}} id: {{email}} </h1>
+
+    <script>
+        function goToregisterPage() {
+            window.location.href = "{% url 'index' %}";
+        }
+    </script>
+    
+    <button class="colourdes" id="topRight" onclick="goToregisterPage()">Logout</button>
+    <form method="POST" action="{% url 'QPMaker' %}" class = "form-container" id="form-div">
+        {% csrf_token %}
+        <h1 id="headText" class="texter">Welcome</h1>
+
+        <label for="subjectMarks" class="texter">Subject Marks</label>
+        <input type = "text" name = "subjectMarks" placeholder = "Enter marks of the subject" required  ><br>
+
+        <label for="subject" class="texter">Name of the Subject</label>
+        <input type = "text" name = "subject" placeholder = "Enter the name of the subject" required  > <br>
+        
+        <label for="diff" class="texter">Paper difficulty/type</label>
+        <input type = "text" name = "diff" placeholder = "Enter question paper difficulty" required  > <br>
+
+        <label for="quesNo" class="texter">Number of questions</label>
+        <input type = "text" name = "quesNo" placeholder = "Enter number of questions" required  > <br>
+
+        <label for="time" class="texter">Maximum duration(hrs)</label>
+        <input type = "text" name = "time" placeholder = "Enter the maximum duration" required  > <br>
+ 
+        <label for="file" class="texter">Choose a file if you have a specific content</label>
+        <input type="file" id="file" name="file">
+
+        <label for="choice" class="texter">Enter also/only from the pdf uploaded(hrs)</label>
+        <input type = "text" name = "choice" placeholder = "also/only" required  > <br>
+        <button class="colourdes">SUBMIT</button>
+        
+        
+    </form>
+</body>
+</html>
+

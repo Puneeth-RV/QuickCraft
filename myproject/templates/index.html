@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel = "stylesheet" href = "{% static 'styles.css' %}">
+</head>
+<body id="regBody">
+    <script>
+        function goToMainPage() {
+            window.location.href = "{% url 'dashboard' %}";
+        }
+    </script>
+    <button class="colourdes" id="topRight" onclick="goToMainPage()">Main page</button>
+    <div class = "form-container" id="form-div">
+        <h1 id="headText" class="texter">Register</h1>
+        <label for="fullname" class="texter">Full Name</label>
+        <input type = "text" name = "fullname" placeholder = "Full name" required  > <br>
+        <label for="email" class="texter">Email</label>
+        <input type = "email" name = "email" placeholder = "Email" required  ><br>
+        <label for="password" class="texter">Password</label>
+        <input type = "password" name = "password" placeholder = "Password" required  > <br>
+        
+        <button class="colourdes" onclick="goToMainPage()">Sign up</button>
+        <p id="logintext" class="texter">Already Registered?</p>
+        <a href="{% url 'login' %}" class="texter">Login here</a>
+    </div>
+</body>
+</html>
+

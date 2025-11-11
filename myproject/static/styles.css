@@ -1,0 +1,101 @@
+.form-container{
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    margin: 100px auto;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    padding: 20px;
+    background-color: lightcoral
+    
+    
+    
+}
+
+input{
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+}
+
+.form-container:hover{
+    background-color: lightblue;;
+    transform: scale(1.05);
+    opacity: 1;
+    box-shadow: 10px 10px 15px;
+}
+
+.form-container input, .form-container button{
+    padding: 8px;
+    font-size: 15px;
+}
+
+button{
+    background-color: blue;
+    color: black;
+    font-weight: bold;
+}
+
+button:hover{
+    background-color: darkblue; 
+}
+
+#form-div{
+    border: 3px solid black;
+    border-radius: 5px;
+    
+}   
+
+
+#regBody{
+    background-color: lightblue;
+    transition: background-color 0.5s ease-in-out;
+
+
+}
+
+#regBody:hover {
+    background-color: lightcoral;
+}
+
+.texter{
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+}
+
+#headText{
+    text-align: center;
+}
+
+.colourdes{
+    background-color: lightblue;
+    transition: background-color 1s ease-in-out;
+    font-family: 'Courier New', Courier, monospace;
+
+}
+
+.colourdes:hover{
+    background-color: lightcoral;
+}
+    
+#logintext{
+    text-align: center;
+}
+
+#topRight{
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background-color: lightcoral ;
+    font-family: 'Courier New', Courier, monospace;
+    padding: 10px;
+    transition: transform 0.3s ease-in-out;
+}
+
+#topRight:hover{
+    background-color: lightblue;
+    transform: scale(1.05);
+    
+}
+
+a{
+    text-align: center;
+}
