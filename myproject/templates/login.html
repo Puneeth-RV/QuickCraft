@@ -5,29 +5,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel = "stylesheet" href = "{% static 'styles.css' %}">
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
 </head>
-<body id="regBody">
+<body id="page-body">
     <script>
-        function goToMainPage() {
-                window.location.href = "{% url 'dashboard' %}";
+        function goToDashboard() {
+            window.location.href = "{% url 'dashboard' %}";
         }
     </script>
-    <button class="colourdes" id="topRight" onclick="goToMainPage()">Main page</button>
-    <form method='POST' action="{% url 'dashboard' %}" class = "form-container" id="form-div">
+    <button class="btn-action" id="logout-btn" onclick="goToDashboard()">Main page</button>
+    <form method="POST" action="{% url 'dashboard' %}" class="form-container" id="main-form">
         {% csrf_token %}
-        <h1 id="headText" class="texter">Log in</h1>
-        <label for="email" class="texter">Email</label>
-        <input type = "email" name = "email" placeholder = "Email" required  ><br>
-        <label for="password" class="texter">Password</label>
-        <input type = "password" name = "password" placeholder = "Password" required  > <br>
-        <button class="colourdes" onclick="goToNextPage()">Sign up</button>
-        <p id="logintext" class="texter">New user?</p>
-        <a href="{% url 'index' %}" class="texter">Register here</a>
+        <h1 id="form-title" class="form-label">Log in</h1>
+        <label for="email" class="form-label">Email</label>
+        <input type="email" name="email" id="email" placeholder="Email" required><br>
+        <label for="password" class="form-label">Password</label>
+        <input type="password" name="password" id="password" placeholder="Password" required><br>
+        <button class="btn-action" type="submit">Log in</button>
+        <p id="auth-prompt" class="form-label">New user?</p>
+        <a href="{% url 'index' %}" class="form-label">Register here</a>
     </form>
 </body>
 </html>
-
-
-
-

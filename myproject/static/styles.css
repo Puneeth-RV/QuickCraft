@@ -1,101 +1,92 @@
-.form-container{
+.form-container {
     display: flex;
     flex-direction: column;
     width: 400px;
     margin: 100px auto;
     transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
     padding: 20px;
-    background-color: lightcoral
-    
-    
-    
+    background-color: lightcoral;
 }
 
-input{
+input {
     font-family: 'Courier New', Courier, monospace;
     font-weight: bold;
 }
 
-.form-container:hover{
-    background-color: lightblue;;
+.form-container:hover {
+    background-color: lightblue;
     transform: scale(1.05);
     opacity: 1;
     box-shadow: 10px 10px 15px;
 }
 
-.form-container input, .form-container button{
+.form-container input, .form-container button {
     padding: 8px;
     font-size: 15px;
 }
 
-button{
+button {
     background-color: blue;
     color: black;
     font-weight: bold;
 }
 
-button:hover{
-    background-color: darkblue; 
+button:hover {
+    background-color: darkblue;
 }
 
-#form-div{
+#main-form {
     border: 3px solid black;
     border-radius: 5px;
-    
-}   
-
-
-#regBody{
-    background-color: lightblue;
-    transition: background-color 0.5s ease-in-out;
-
-
 }
 
-#regBody:hover {
+#page-body {
+    background-color: lightblue;
+    transition: background-color 0.5s ease-in-out;
+}
+
+#page-body:hover {
     background-color: lightcoral;
 }
 
-.texter{
+.form-label {
     font-family: 'Courier New', Courier, monospace;
     font-weight: bold;
 }
 
-#headText{
+#form-title {
     text-align: center;
 }
 
-.colourdes{
+.btn-action {
     background-color: lightblue;
     transition: background-color 1s ease-in-out;
     font-family: 'Courier New', Courier, monospace;
-
 }
 
-.colourdes:hover{
+.btn-action:hover {
     background-color: lightcoral;
 }
-    
-#logintext{
+
+#auth-prompt {
     text-align: center;
 }
 
-#topRight{
+#logout-btn {
     position: fixed;
     top: 10px;
     right: 10px;
-    background-color: lightcoral ;
+    background-color: lightcoral;
     font-family: 'Courier New', Courier, monospace;
     padding: 10px;
     transition: transform 0.3s ease-in-out;
 }
 
-#topRight:hover{
+#logout-btn:hover {
     background-color: lightblue;
     transform: scale(1.05);
-    
 }
 
-a{
+a {
     text-align: center;
 }

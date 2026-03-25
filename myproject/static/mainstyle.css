@@ -4,7 +4,7 @@
     padding: 0;
 }
 
-#regBody {
+#page-body {
     min-height: 100vh;
     display: flex;
     align-items: center;
@@ -15,7 +15,7 @@
     padding: 60px 20px 20px;
 }
 
-#regBody:hover {
+#page-body:hover {
     background-color: lightcoral;
 }
 
@@ -38,13 +38,13 @@
     box-shadow: 8px 8px 20px rgba(0,0,0,0.2);
 }
 
-.texter {
+.form-label {
     font-family: 'Courier New', Courier, monospace;
     font-weight: bold;
     text-align: center;
 }
 
-#headText {
+#form-title {
     font-size: 1.5rem;
     margin-bottom: 8px;
     text-align: center;
@@ -61,7 +61,7 @@ input[type="file"] {
     border-radius: 4px;
 }
 
-.colourdes {
+.btn-action {
     padding: 10px;
     background-color: lightblue;
     color: black;
@@ -74,12 +74,12 @@ input[type="file"] {
     transition: background-color 1s ease-in-out, transform 0.3s ease-in-out;
 }
 
-.colourdes:hover {
+.btn-action:hover {
     background-color: lightcoral;
     transform: scale(1.03);
 }
 
-#topRight {
+#logout-btn {
     position: fixed;
     top: 12px;
     right: 12px;
@@ -93,12 +93,12 @@ input[type="file"] {
     transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
 }
 
-#topRight:hover {
+#logout-btn:hover {
     background-color: lightblue;
     transform: scale(1.05);
 }
 
-#logintext,
+#auth-prompt,
 a {
     text-align: center;
 }

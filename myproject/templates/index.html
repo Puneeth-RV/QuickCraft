@@ -5,28 +5,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
-    <link rel = "stylesheet" href = "{% static 'styles.css' %}">
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
 </head>
-<body id="regBody">
+<body id="page-body">
     <script>
-        function goToMainPage() {
+        function goToDashboard() {
             window.location.href = "{% url 'dashboard' %}";
         }
     </script>
-    <button class="colourdes" id="topRight" onclick="goToMainPage()">Main page</button>
-    <div class = "form-container" id="form-div">
-        <h1 id="headText" class="texter">Register</h1>
-        <label for="fullname" class="texter">Full Name</label>
-        <input type = "text" name = "fullname" placeholder = "Full name" required  > <br>
-        <label for="email" class="texter">Email</label>
-        <input type = "email" name = "email" placeholder = "Email" required  ><br>
-        <label for="password" class="texter">Password</label>
-        <input type = "password" name = "password" placeholder = "Password" required  > <br>
-        
-        <button class="colourdes" onclick="goToMainPage()">Sign up</button>
-        <p id="logintext" class="texter">Already Registered?</p>
-        <a href="{% url 'login' %}" class="texter">Login here</a>
+    <button class="btn-action" id="logout-btn" onclick="goToDashboard()">Main page</button>
+    <div class="form-container" id="main-form">
+        <h1 id="form-title" class="form-label">Register</h1>
+        <label for="full_name" class="form-label">Full Name</label>
+        <input type="text" name="full_name" id="full_name" placeholder="Full name" required><br>
+        <label for="email" class="form-label">Email</label>
+        <input type="email" name="email" id="email" placeholder="Email" required><br>
+        <label for="password" class="form-label">Password</label>
+        <input type="password" name="password" id="password" placeholder="Password" required><br>
+        <button class="btn-action" onclick="goToDashboard()">Sign up</button>
+        <p id="auth-prompt" class="form-label">Already Registered?</p>
+        <a href="{% url 'login' %}" class="form-label">Login here</a>
     </div>
 </body>
 </html>
-

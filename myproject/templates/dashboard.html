@@ -5,47 +5,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Main Page</title>
-    <link rel = "stylesheet" href = "{% static 'mainstyle.css' %}">
+    <link rel="stylesheet" href="{% static 'mainstyle.css' %}">
 </head>
-<body id="regBody">
-    <h1> Hello {{username}} id: {{email}} </h1>
-
+<body id="page-body">
     <script>
-        function goToregisterPage() {
+        function goToHome() {
             window.location.href = "{% url 'index' %}";
         }
     </script>
-    
-    <button class="colourdes" id="topRight" onclick="goToregisterPage()">Logout</button>
-    <form method="POST" action="{% url 'QPMaker' %}" enctype="multipart/form-data" class = "form-container" id="form-div">
+
+    <button class="btn-action" id="logout-btn" onclick="goToHome()">Logout</button>
+    <form method="POST" action="{% url 'generate_paper' %}" enctype="multipart/form-data" class="form-container" id="main-form">
         {% csrf_token %}
-        <h1 id="headText" class="texter">Welcome</h1>
+        <h1 id="form-title" class="form-label">Welcome</h1>
 
-        <label for="subjectMarks" class="texter">Subject Marks</label>
-        <input type="text" id="subjectMarks" name="subjectMarks" placeholder="Enter marks of the subject" required>
+        <label for="subject_marks" class="form-label">Subject Marks</label>
+        <input type="text" id="subject_marks" name="subject_marks" placeholder="Enter marks of the subject" required>
 
-        <label for="subject" class="texter">Name of the Subject</label>
+        <label for="subject" class="form-label">Name of the Subject</label>
         <input type="text" id="subject" name="subject" placeholder="Enter the name of the subject" required>
 
-        <label for="diff" class="texter">Paper Difficulty / Type</label>
-        <input type="text" id="diff" name="diff" placeholder="Enter question paper difficulty" required>
+        <label for="difficulty" class="form-label">Paper Difficulty / Type</label>
+        <input type="text" id="difficulty" name="difficulty" placeholder="Enter question paper difficulty" required>
 
-        <label for="quesNo" class="texter">Number of Questions</label>
-        <input type="text" id="quesNo" name="quesNo" placeholder="Enter number of questions" required>
+        <label for="question_count" class="form-label">Number of Questions</label>
+        <input type="text" id="question_count" name="question_count" placeholder="Enter number of questions" required>
 
-        <label for="time" class="texter">Maximum Duration (hrs)</label>
-        <input type="text" id="time" name="time" placeholder="Enter the maximum duration" required>
+        <label for="duration" class="form-label">Maximum Duration (hrs)</label>
+        <input type="text" id="duration" name="duration" placeholder="Enter the maximum duration" required>
 
-        <label for="file" class="texter">Upload PDF (optional)</label>
-        <input type="file" id="file" name="file" accept=".pdf">
+        <label for="pdf_file" class="form-label">Upload PDF (optional)</label>
+        <input type="file" id="pdf_file" name="pdf_file" accept=".pdf">
 
-        <label for="choice" class="texter">Use PDF content</label>
-        <input type="text" id="choice" name="choice" placeholder="also / only" required>
+        <label for="pdf_usage" class="form-label">Use PDF content</label>
+        <input type="text" id="pdf_usage" name="pdf_usage" placeholder="also / only" required>
 
-        <button class="colourdes">SUBMIT</button>
-        
-        
+        <button class="btn-action">SUBMIT</button>
     </form>
 </body>
 </html>
-
