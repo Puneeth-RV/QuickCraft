@@ -4,21 +4,24 @@
     padding: 0;
 }
 
-/* ── Tokens: light (default) ─────────────── */
+/* ── Tokens: light (MSR UAS brand) ──────── */
 :root {
-    --bg:           #f4f6f9;
+    --bg:           #f6f6f6;
     --surface:      #ffffff;
-    --border:       #e2e8f0;
-    --border-input: #cbd5e1;
-    --text:         #1e293b;
-    --text-muted:   #64748b;
-    --text-label:   #334155;
-    --input-bg:     #f8fafc;
-    --badge-bg:     #e2e8f0;
-    --badge-text:   #64748b;
-    --focus-ring:   rgba(99, 102, 241, 0.18);
-    --focus-border: #6366f1;
+    --border:       #e0dede;
+    --border-input: #ccc;
+    --text:         #313131;
+    --text-muted:   #6b6b6b;
+    --text-label:   #313131;
+    --input-bg:     #ffffff;
+    --badge-bg:     #f0efef;
+    --badge-text:   #811c52;
+    --focus-ring:   rgba(227, 74, 33, 0.15);
+    --focus-border: #E34A21;
     --shadow:       0 4px 24px rgba(0,0,0,0.07);
+    --accent:       #E34A21;
+    --accent-dark:  #ce380e;
+    --accent2:      #992361;
 }
 
 /* ── Tokens: dark ────────────────────────── */
@@ -72,7 +75,7 @@ body {
     font-size: 1.25rem;
     font-weight: 700;
     letter-spacing: -0.4px;
-    background: linear-gradient(135deg, #6366f1, #a78bfa);
+    background: linear-gradient(135deg, #E34A21, #992361);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -129,8 +132,14 @@ body {
     max-width: 860px;
 }
 
-/* Submit button spans both columns */
-.submit-btn { grid-column: 1 / -1; }
+/* Submit button spans both columns, but not full width */
+.submit-btn {
+    grid-column: 1 / -1;
+    width: fit-content;
+    min-width: 180px;
+    align-self: center;
+    justify-self: center;
+}
 
 /* ── Form sections ───────────────────────── */
 .form-section {
@@ -255,16 +264,15 @@ body {
 
 /* ── Submit button ───────────────────────── */
 .submit-btn {
-    background: linear-gradient(135deg, #6366f1, #a78bfa);
+    background: linear-gradient(135deg, #E34A21, #992361);
     border: none;
     border-radius: 9px;
-    color: #fff;
+    color: #ffffff;
     cursor: pointer;
     font-family: inherit;
     font-size: 0.95rem;
     font-weight: 700;
-    padding: 12px;
-    width: 100%;
+    padding: 12px 32px;
     transition: opacity 0.2s, transform 0.15s;
     display: flex;
     align-items: center;
