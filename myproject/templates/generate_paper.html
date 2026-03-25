@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QuickCraft | Question Paper Generator</title>
+    <title>QuickCraft</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -14,7 +14,6 @@
 
     <header class="top-bar">
         <div class="logo">
-            <span class="logo-icon">&#9998;</span>
             <span class="logo-text">QuickCraft</span>
             <span class="tagline">AI-powered question paper generator</span>
         </div>
@@ -37,17 +36,17 @@
                     </div>
                     <div class="field">
                         <label for="subject_marks">Total Marks</label>
-                        <input type="number" id="subject_marks" name="subject_marks" placeholder="e.g. 100" min="1" required>
+                        <input type="number" id="subject_marks" name="subject_marks" placeholder="e.g. 25" min="1" required>
                     </div>
                 </div>
                 <div class="field-row">
                     <div class="field">
                         <label for="question_count">No. of Questions</label>
-                        <input type="number" id="question_count" name="question_count" placeholder="e.g. 10" min="1" required>
+                        <input type="number" id="question_count" name="question_count" placeholder="e.g. 5" min="1" required>
                     </div>
                     <div class="field">
                         <label for="duration">Duration (hrs)</label>
-                        <input type="number" id="duration" name="duration" placeholder="e.g. 3" min="1" required>
+                        <input type="number" id="duration" name="duration" placeholder="e.g. 1" min="1" required>
                     </div>
                 </div>
                 <div class="field">
@@ -67,7 +66,7 @@
                 </div>
                 <div class="field">
                     <label for="pdf_usage">How to use the PDF</label>
-                    <select id="pdf_usage" name="pdf_usage" required>
+                    <select id="pdf_usage" name="pdf_usage">
                         <option value="" disabled selected>Select usage</option>
                         <option value="also">Blend: mix PDF content with general knowledge</option>
                         <option value="only">Strict: questions from PDF only</option>
@@ -113,10 +112,13 @@
             document.getElementById('submit-btn').disabled = true;
         });
 
-        // ── File name display ─────────────────────
+        // ── File name display + conditional required ──
+        const pdfUsage = document.getElementById('pdf_usage');
         document.getElementById('pdf_file').addEventListener('change', (e) => {
+            const file = e.target.files[0];
             document.getElementById('file-hint').textContent =
-                e.target.files[0]?.name || 'Click to browse or drag & drop';
+                file?.name || 'Click to browse or drag & drop';
+            pdfUsage.required = !!file;
         });
     </script>
 </body>
