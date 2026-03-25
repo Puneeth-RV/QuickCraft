@@ -17,30 +17,31 @@
     </script>
     
     <button class="colourdes" id="topRight" onclick="goToregisterPage()">Logout</button>
-    <form method="POST" action="{% url 'QPMaker' %}" class = "form-container" id="form-div">
+    <form method="POST" action="{% url 'QPMaker' %}" enctype="multipart/form-data" class = "form-container" id="form-div">
         {% csrf_token %}
         <h1 id="headText" class="texter">Welcome</h1>
 
         <label for="subjectMarks" class="texter">Subject Marks</label>
-        <input type = "text" name = "subjectMarks" placeholder = "Enter marks of the subject" required  ><br>
+        <input type="text" id="subjectMarks" name="subjectMarks" placeholder="Enter marks of the subject" required>
 
         <label for="subject" class="texter">Name of the Subject</label>
-        <input type = "text" name = "subject" placeholder = "Enter the name of the subject" required  > <br>
-        
-        <label for="diff" class="texter">Paper difficulty/type</label>
-        <input type = "text" name = "diff" placeholder = "Enter question paper difficulty" required  > <br>
+        <input type="text" id="subject" name="subject" placeholder="Enter the name of the subject" required>
 
-        <label for="quesNo" class="texter">Number of questions</label>
-        <input type = "text" name = "quesNo" placeholder = "Enter number of questions" required  > <br>
+        <label for="diff" class="texter">Paper Difficulty / Type</label>
+        <input type="text" id="diff" name="diff" placeholder="Enter question paper difficulty" required>
 
-        <label for="time" class="texter">Maximum duration(hrs)</label>
-        <input type = "text" name = "time" placeholder = "Enter the maximum duration" required  > <br>
- 
-        <label for="file" class="texter">Choose a file if you have a specific content</label>
-        <input type="file" id="file" name="file">
+        <label for="quesNo" class="texter">Number of Questions</label>
+        <input type="text" id="quesNo" name="quesNo" placeholder="Enter number of questions" required>
 
-        <label for="choice" class="texter">Enter also/only from the pdf uploaded(hrs)</label>
-        <input type = "text" name = "choice" placeholder = "also/only" required  > <br>
+        <label for="time" class="texter">Maximum Duration (hrs)</label>
+        <input type="text" id="time" name="time" placeholder="Enter the maximum duration" required>
+
+        <label for="file" class="texter">Upload PDF (optional)</label>
+        <input type="file" id="file" name="file" accept=".pdf">
+
+        <label for="choice" class="texter">Use PDF content</label>
+        <input type="text" id="choice" name="choice" placeholder="also / only" required>
+
         <button class="colourdes">SUBMIT</button>
         
         

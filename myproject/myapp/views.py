@@ -3,6 +3,9 @@ import os
 from django.conf import settings
 from django.http import HttpResponse
 import io
+from dotenv import load_dotenv
+
+load_dotenv()
 
 import fitz 
 from openai import OpenAI
@@ -30,32 +33,21 @@ def set_column_width(column, width):
 
 def pdf_to_text(uploaded_file):
     """Extract text from uploaded PDF file"""
+    if uploaded_file is None:
+        return ""
     text = ""
     try:
-        # Create a temporary file path
-        temp_path = os.path.join(settings.MEDIA_ROOT, 'temp_upload.pdf')
-        
-        # Save the uploaded file temporarily
-        with open(temp_path, 'wb+') as destination:
-            for chunk in uploaded_file.chunks():
-                destination.write(chunk)
-        
-        # Extract text using PyMuPDF
-        with fitz.open(temp_path) as doc:
+        pdf_bytes = b"".join(chunk for chunk in uploaded_file.chunks())
+        with fitz.open(stream=pdf_bytes, filetype="pdf") as doc:
             text = "\n".join([page.get_text() for page in doc])
-        
-        # Clean up the temporary file
-        os.remove(temp_path)
-        
     except Exception as e:
         print(f"Error processing PDF: {e}")
-        text = ""  # Return empty string if extraction fails
-    
+        text = ""
     return text
 
 client = OpenAI(
   base_url="https://openrouter.ai/api/v1",
-  api_key="DEEPSEEK API-KEY",
+  api_key=os.getenv("OPENROUTER_API_KEY"),
 )
 
 
@@ -103,7 +95,7 @@ def QPMaker(request):
 
         content_prompt = ""
         if context["choice"] == "only":
-            content_prompt = f"Use ONLY this content: {pdf_text}"
+            content_prompt = f"You MUST generate questions STRICTLY and EXCLUSIVELY from the following content. Do NOT use any outside knowledge. Every question must be directly based on this text:\n\n{pdf_text}"
         elif context["choice"] == "also":
             content_prompt = f"Consider also this additional content: {pdf_text}"
 
@@ -130,7 +122,7 @@ def QPMaker(request):
 
         # OpenAI request to generate questions
         completion = client.chat.completions.create(
-        model="deepseek/deepseek-r1:free",
+        model="deepseek/deepseek-v3.2",
         messages=[
             {
             "role": "user",
