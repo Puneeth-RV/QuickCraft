@@ -1,5 +1,11 @@
-Django==5.2
-PyMuPDF
-openai
-python-docx
-python-dotenv
+# Install production dependencies:
+#   pip install -r requirements/base.txt
+#
+# Install dev dependencies (includes the above):
+#   pip install -r requirements/dev.txt
+#
+# Or install everything via pyproject.toml:
+#   pip install -e .           # production
+#   pip install -e ".[dev]"    # with dev tools
+
+-r requirements/base.txt

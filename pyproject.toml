@@ -1,0 +1,31 @@
+[project]
+name = "quickcraft"
+version = "0.1.0"
+description = "AI-powered question paper generator"
+requires-python = ">=3.10"
+dependencies = [
+    "Django~=5.2",
+    "PyMuPDF~=1.26",
+    "openai~=1.65",
+    "python-docx~=1.1",
+    "python-dotenv~=1.1",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest~=8.0",
+    "pytest-django~=4.9",
+    "ruff~=0.9",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "W"]
+ignore = ["E501"]
+
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "myproject.settings"
+pythonpath = ["myproject"]
