@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 import os
 from django.conf import settings
 from django.http import HttpResponse
@@ -50,51 +50,20 @@ client = OpenAI(
 )
 
 
-def index(request):
-    if request.method == "POST":
-        return redirect("login")
-    return render(request, "index.html")
-
-
-def login(request):
-    return render(request, "login.html")
-
-
-def dashboard(request):
-    context = {}
-    if request.method == "POST":
-        context = {
-            "username": "Puneeth R V",
-            "email": request.POST.get("email", "")
-        }
-        return redirect("generate_paper")
-    return render(request, "dashboard.html", context)
-
-
 def generate_paper(request):
-    context = {}
     if request.method == "POST":
-        context = {
-            "subject_marks": request.POST.get("subject_marks", ""),
-            "subject": request.POST.get("subject", ""),
-            "difficulty": request.POST.get("difficulty", ""),
-            "question_count": request.POST.get("question_count", ""),
-            "duration": request.POST.get("duration", ""),
-            "pdf_file": request.FILES.get("pdf_file", None),
-            "pdf_usage": request.POST.get("pdf_usage"),
-        }
-
-        total_marks = context["subject_marks"]
-        subject_name = context["subject"]
-        difficulty = context["difficulty"]
-        question_count = context["question_count"]
-        duration = context["duration"]
-        pdf_content = extract_pdf_text(context["pdf_file"])
+        total_marks = request.POST.get("subject_marks", "")
+        subject_name = request.POST.get("subject", "")
+        difficulty = request.POST.get("difficulty", "")
+        question_count = request.POST.get("question_count", "")
+        duration = request.POST.get("duration", "")
+        pdf_content = extract_pdf_text(request.FILES.get("pdf_file", None))
+        pdf_usage = request.POST.get("pdf_usage")
 
         content_prompt = ""
-        if context["pdf_usage"] == "only":
+        if pdf_usage == "only":
             content_prompt = f"You MUST generate questions STRICTLY and EXCLUSIVELY from the following content. Do NOT use any outside knowledge. Every question must be directly based on this text:\n\n{pdf_content}"
-        elif context["pdf_usage"] == "also":
+        elif pdf_usage == "also":
             content_prompt = f"Consider also this additional content: {pdf_content}"
 
         document = Document()
@@ -172,4 +141,4 @@ def generate_paper(request):
         response['Content-Disposition'] = f'attachment; filename="{subject_name}.docx"'
         return response
 
-    return render(request, "generate_paper.html", context)
+    return render(request, "generate_paper.html")
